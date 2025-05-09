@@ -1,7 +1,3 @@
-# TelaLogin
-Aplicativo simples com duas telas Login e Home e autenticação com dados do arquivo dados.json
-
-```json
 [
   {
     "id": 1,
@@ -22,6 +18,3 @@ Aplicativo simples com duas telas Login e Home e autenticação com dados do arq
     "senha": "senai123"
   }
 ]
-```
-
-Exemplo para aula de flutter
