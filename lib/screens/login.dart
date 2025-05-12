@@ -7,6 +7,11 @@ class Login extends StatelessWidget {
   const Login({super.key, this.title});
 
   validar(context) {
+    String email = "aluno@email.com";
+    String senha = "senha123";
+
+    //Comparar a senha
+
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => Home(title: 'Home')),
