@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 import 'home.dart';
@@ -7,6 +5,13 @@ import 'home.dart';
 class Login extends StatelessWidget {
   final String? title;
   const Login({super.key, this.title});
+
+  validar(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Home(title: 'Home')),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +39,12 @@ class Login extends StatelessWidget {
                   labelText: 'Digite sua senha:',
                 ),
               ),
-              ElevatedButton(onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>const Home(title:'Home'))
-                );
-              }, child: Text('Entrar')),
+              ElevatedButton(
+                onPressed: () {
+                  validar(context);
+                },
+                child: Text('Entrar'),
+              ),
             ],
           ),
         ),
