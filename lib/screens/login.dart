@@ -2,18 +2,44 @@ import 'package:flutter/material.dart';
 
 import 'home.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   final String? title;
   const Login({super.key, this.title});
+  @override
+  State<Login> createState() => LoginState();
+}
+
+class LoginState extends State<Login> {
+  String email = '';
+  String senha = '';
 
   validar(context) {
-    String email = "aluno@email.com";
-    String senha = "senha123";
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Home(title: 'Home')),
-    );
+    setState(() {
+      if (email == 'aluno@email.com' && senha == 'senha123') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Home(title: 'Home')),
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Erro"),
+              content: Text("Email ou senha inválidos"),
+              actions: <Widget>[
+                ElevatedButton(
+                  child: Text("Fechar"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
   }
 
   @override
@@ -21,7 +47,7 @@ class Login extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text(this.title.toString()),
+          title: Text(widget.title.toString()),
           backgroundColor: Colors.blueGrey,
         ),
         body: Center(
@@ -34,6 +60,9 @@ class Login extends StatelessWidget {
                   border: OutlineInputBorder(),
                   labelText: 'Digite seu e-mail:',
                 ),
+                onChanged: (text) {
+                  email = text;
+                },
               ),
               Text('Senha:'),
               TextField(
@@ -41,6 +70,9 @@ class Login extends StatelessWidget {
                   border: OutlineInputBorder(),
                   labelText: 'Digite sua senha:',
                 ),
+                onChanged: (text) {
+                  senha = text;
+                },
               ),
               ElevatedButton(
                 onPressed: () {

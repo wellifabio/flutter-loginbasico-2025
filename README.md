@@ -26,6 +26,7 @@ fletter run
 ```
 
 ## Desafio
+- 1 Ao invéz de autenticar com apenas um usuário, altere o programa para validar os dados com um dos usuários do arquivo dados.json
 - assets/dados.json
 ```json
 { "users":[
@@ -50,3 +51,4 @@ fletter run
   ]
 }
 ```
+- 2 Altere o campo de senha para que apareca asteriscos ou bolinhas ao invez da senha.
