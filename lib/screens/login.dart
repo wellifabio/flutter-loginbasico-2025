@@ -13,6 +13,13 @@ class LoginState extends State<Login> {
   String email = '';
   String senha = '';
 
+  @override
+  void initState() {
+    super.initState();
+    email = '';
+    senha = '';
+  }
+
   validar(context) {
     setState(() {
       if (email == 'aluno@email.com' && senha == 'senha123') {
@@ -44,44 +51,43 @@ class LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title.toString()),
-          backgroundColor: Colors.blueGrey,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text('E-mail:'),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Digite seu e-mail:',
-                ),
-                onChanged: (text) {
-                  email = text;
-                },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title.toString()),
+        backgroundColor: Colors.blueGrey,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text('E-mail:'),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Digite seu e-mail:',
               ),
-              Text('Senha:'),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Digite sua senha:',
-                ),
-                onChanged: (text) {
-                  senha = text;
-                },
+              onChanged: (text) {
+                email = text;
+              },
+            ),
+            Text('Senha:'),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Digite sua senha:',
               ),
-              ElevatedButton(
-                onPressed: () {
-                  validar(context);
-                },
-                child: Text('Entrar'),
-              ),
-            ],
-          ),
+              onChanged: (text) {
+                senha = text;
+              },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                validar(context);
+              },
+              child: Text('Entrar'),
+            ),
+          ],
         ),
       ),
     );
